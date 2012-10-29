@@ -1,15 +1,13 @@
-package com.mistphizzle.stopwitherspawns;
+package com.mistphizzle.withermanagement;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.List;
 
 import org.bukkit.Effect;
 import org.bukkit.Location;
 import org.bukkit.World;
-import org.bukkit.block.Block;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Entity;
@@ -22,12 +20,16 @@ import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class StopWitherSpawns extends JavaPlugin implements Listener {
+public class WitherManagement extends JavaPlugin implements Listener {
 	
 	// Configuration Stuff
 	File configFile;
 	FileConfiguration config;
+	
+	WitherManagementCommand wmc;
+	
 	public void onEnable() {
+		wmc = new WitherManagementCommand(this);
 		getServer().getPluginManager().registerEvents(this, this);
 		configFile = new File(getDataFolder(), "config.yml");
 		

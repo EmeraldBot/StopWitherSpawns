@@ -1,4 +1,15 @@
 name: WitherManagement
 author: MistPhizzle
 version: 1.0
-main: com.mistphizzle.stopwitherspawns.StopWitherSpawns
+main: com.mistphizzle.withermanagement.WitherManagement
+commands:
+  withermanagement:
+    usage: /<command>
+    alias: [wither, wm]
+permissions:
+  withermanagement.reload:
+    description: Allows use of the reload argument.
+    default: op
+  withermanagement.version:
+    description: Allows use of the version argument.
+    default: op
