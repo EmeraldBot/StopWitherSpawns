@@ -1,0 +1,6 @@
+# The Super Awesome short config for "StopWitherSpawns". Edit the list below to add / remove worlds in which we will allow the Wither to spawn.
+Worlds:
+- world1
+- world1_nether
+Properties:
+  DisableExplosions: false
