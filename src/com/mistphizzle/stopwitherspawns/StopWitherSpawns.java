@@ -14,6 +14,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Wither;
 import org.bukkit.entity.WitherSkull;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -69,11 +70,17 @@ public class StopWitherSpawns extends JavaPlugin implements Listener {
 	
 	@EventHandler
 	public void WitherSpawnExplosion(EntityExplodeEvent event) {
-		if (event.getEntityType() == EntityType.WITHER) {
-			if (config.getBoolean("Properties.DisableExplosions", true)) {
-			List<Block> blocks = event.blockList();
-			event.blockList().removeAll(blocks);
-			}
+		if (event.isCancelled()) return;
+		Entity entity = event.getEntity();
+		
+		if (entity instanceof Wither && config.getBoolean("Properties.DisableExplosions", true)) {
+			World world = event.getLocation().getWorld();
+			Location location = event.getLocation();
+			
+			event.setCancelled(true);
+			world.createExplosion(location, 0.0F, false);
+			world.playEffect(location, Effect.SMOKE, 1);
+			
 		}
 	}
 	
