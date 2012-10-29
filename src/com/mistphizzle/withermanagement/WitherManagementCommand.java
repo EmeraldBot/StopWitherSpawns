@@ -23,7 +23,8 @@ public class WitherManagementCommand {
 			public boolean onCommand(CommandSender s, Command c, String label, String[] args) {
 				if (args.length < 1) {
 					s.sendMessage("§eWitherManagement Commands");
-					s.sendMessage("§e/withermanagement reload:&f - Reloads Config.");
+					s.sendMessage("§3/withermanagement reload:§f - Reloads Config.");
+					s.sendMessage("§3/withermanagement version:§f - Checks the version number.");
 					return true;
 				}
 				else if (args[0].equalsIgnoreCase("reload") && s.hasPermission("withermanagement.reload")) {
@@ -33,7 +34,7 @@ public class WitherManagementCommand {
 				}
 				else if (args[0].equalsIgnoreCase("version")) {
 					if (s.hasPermission("withermanagement.version")) {
-						s.sendMessage("§eThis server is running WitherManagement §4v" + plugin.getDescription().getVersion());
+						s.sendMessage("§eThis server is running WitherManagement §3v" + plugin.getDescription().getVersion());
 						return true;
 					}
 					else {

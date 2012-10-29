@@ -5,7 +5,7 @@ main: com.mistphizzle.withermanagement.WitherManagement
 commands:
   withermanagement:
     usage: /<command>
-    alias: [wither, wm]
+    aliases: [wither, wm]
 permissions:
   withermanagement.reload:
     description: Allows use of the reload argument.
